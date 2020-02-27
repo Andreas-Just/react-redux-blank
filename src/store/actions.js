@@ -1,10 +1,8 @@
 export const ACTION_TYPE = {
-  SELECT_AUTHOR: 'select_author',
+  SELECT_AUTHOR: 'SELECT_AUTHOR',
 };
 
-export function selectAuthor(selectedIndex) {
-  return {
-    type: ACTION_TYPE.SELECT_AUTHOR,
-    selectedIndex
-  };
-}
+export const incrementIndex = (index) => ({
+  type: ACTION_TYPE.SELECT_AUTHOR,
+  index
+});

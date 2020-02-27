@@ -1,18 +1,17 @@
-import { ACTION_TYPE } from "./actions";
+import { ACTION_TYPE } from './actions';
 
 const initialState = {
-  selectedIndex: 1,
-
+  index: 0,
 };
 
-export function getNextState(state = initialState, action) {
+export const getNextState = (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPE.SELECT_AUTHOR:
       return {
         ...state,
-        selectedIndex: state.selectedIndex + action.selectedIndex
+        index: state.index + action.index
       };
     default:
       return state;
   }
-}
+};

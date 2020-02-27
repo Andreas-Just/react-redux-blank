@@ -1,18 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { incrementIndex } from '../../store/actions';
+import './Test.css'
 
-class Test extends Component {
+const Test = ({ increment, data }) => (
+  <div className='Test'>
+    <button onClick={() => increment(10)}>ON</button>
+    <h2>{data}</h2>
+  </div>
+);
 
-  render() {
-    const { selectAuthor, data } = this.props;
-    return (
-      <div>
-        <button onClick={() => selectAuthor(1)}>ON</button>
-        <h2>{data}</h2>
-      </div>
-    );
-  }
-}
+const mapStateToProps = (state) => ({
+  data: state.index
+});
+const mapDispatchToProps = (dispatch) => ({
+  increment: (number) => dispatch(incrementIndex(number))
+});
 
-Test.propTypes = {};
-
-export default Test;
+export default connect(mapStateToProps, mapDispatchToProps)(Test);
