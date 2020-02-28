@@ -1,13 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { getNextState } from './store/reducers';
-import Test from './component/Test/Test';
+import Test from './component/Test';
+import store from './store.js';
 
-const store = createStore(getNextState);
-
-export const App = () => (
+const App = () => (
   <Provider store={store}>
     <Test />
   </Provider>
 );
+
+export default App;
