@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { increment } from '../../actions/actionCreator';
-import './Test.css'
+import './Test.css';
 
-const Test = ({ increment, test }) => (
-  <div className='test'>
+const Test = ({ incrementConnect, test }) => (
+  <div className="test">
     <div className="test__btn">
       <button
-        onClick={() => increment(10)}
+        type="button"
+        onClick={() => incrementConnect(10)}
         data-hover="Increment"
       >
         Increment
@@ -17,9 +19,14 @@ const Test = ({ increment, test }) => (
   </div>
 );
 
+Test.propTypes = {
+  test: PropTypes.number.isRequired,
+  incrementConnect: PropTypes.func.isRequired,
+};
+
 export default connect(({ test }) => ({
   test,
-}), { increment })(Test);
+}), { incrementConnect: increment })(Test);
 
 /*
 export default connect(state => ({
